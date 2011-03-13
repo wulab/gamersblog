@@ -1,0 +1,19 @@
+body { background-color: #6699ff; }
+a { color: #003399; text-decoration: none; }
+a:hover { color: #003399; background-color: transparent; text-decoration: underline; }
+h1, h2, h3 { color: #404040; }
+#logo { margin-bottom: 40px; font-size: 3.5em; line-height: 1; }
+#logo a { color: #00cc00; text-decoration: none; }
+#logo img { float: left; display: block; margin-right: 10px; }
+#user_nav { float: right; font-size: 0.9em; }
+#page {
+  margin: 40px auto;
+  padding: 20px 40px;
+  width: 640px;
+  background-color: #fff;
+  border: 5px solid #808080;
+}
+.flash { margin: 10px 0; padding: 10px 20px; border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; text-align: center; }
+.flash.success { background-color: #99cc33; }
+.flash.notice { background-color: #ffcc00; }
+.comment { margin: 10px 0; padding-left: 10px; border-left: 5px solid #99cc33; }

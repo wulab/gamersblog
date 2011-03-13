@@ -1,0 +1,8 @@
+<div class="comment">
+  <strong>Comment Author</strong> on
+  <em><%= comment.created_at.to_s(:long) %></em>
+   &#183; <%= link_to 'Edit', edit_comment_path(comment) %>
+   &#183; <%= link_to 'Delete', comment_path(comment), :method => :delete, :confirm => "Are you sure?" %>
+  <br />
+  <%= simple_format comment.content %>
+</div>

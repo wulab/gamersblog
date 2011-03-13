@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Railscast</title>
+  <%= stylesheet_link_tag "scaffold", "application" %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<div id="page">
+  <% flash.each do |key, value| %>
+    <div class="flash <%= key %>"><%= value %></div>
+  <% end %>
+  
+  <div id="user_nav">
+  </div>
+  
+  <h1 id="logo">
+    <%= link_to root_url do %>
+      <img src="/images/joystick.png" height="50" />
+      <span>GamersBlog</span>
+    <% end %>
+  </h1>
+  
+  <%= yield %>
+</div>
+
+</body>
+</html>

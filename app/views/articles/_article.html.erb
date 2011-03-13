@@ -1,0 +1,20 @@
+<h2>
+  <%= link_to_unless_current article.title, article %>
+</h2>
+
+<p>
+  by <strong>Article Author</strong>
+  on <em><%= article.created_at.to_s(:long) %></em>
+  &#183; <%= link_to 'Edit', edit_article_path(article) %>
+  &#183; <%= link_to 'Delete', article, :method => :delete, :confirm => "Are you sure?" %>
+</p>
+
+<% if current_page?(:action => "index") %>
+<p>
+  <%= simple_format truncate(article.content, :length => 500, :separator => ' ') %>
+  [<%= link_to('Read more', article) %>]
+  [<%= link_to pluralize(article.comments.count, "comment"), article_path(article, :anchor => "comments") %>]
+</p>
+<% else %>
+<p><%= simple_format article.content %></p>
+<% end %>
