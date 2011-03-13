@@ -1,9 +1,10 @@
 class ArticlesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  load_and_authorize_resource
+  
   # GET /articles
   # GET /articles.xml
   def index
-    @articles = Article.all
+    #@articles = Article.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +15,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.xml
   def show
-    @article = Article.find(params[:id])
+    #@article = Article.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +26,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   # GET /articles/new.xml
   def new
-    @article = Article.new
+    #@article = Article.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,13 +36,14 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    @article = Article.find(params[:id])
+    #@article = Article.find(params[:id])
   end
 
   # POST /articles
   # POST /articles.xml
   def create
-    @article = Article.new(params[:article])
+    #@article = Article.new(params[:article])
+    @article.author = current_user if user_signed_in?
 
     respond_to do |format|
       if @article.save
@@ -57,7 +59,7 @@ class ArticlesController < ApplicationController
   # PUT /articles/1
   # PUT /articles/1.xml
   def update
-    @article = Article.find(params[:id])
+    #@article = Article.find(params[:id])
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
@@ -73,7 +75,7 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.xml
   def destroy
-    @article = Article.find(params[:id])
+    #@article = Article.find(params[:id])
     @article.destroy
 
     respond_to do |format|

@@ -3,10 +3,14 @@
 </h2>
 
 <p>
-  by <strong><%= article.author.name %></strong>
+  by <strong><%= (!article.author.nil?) ? article.author.name : "Guest" %></strong>
   on <em><%= article.created_at.to_s(:long) %></em>
+  <% if can? :update, article %>
   &#183; <%= link_to 'Edit', edit_article_path(article) %>
+  <% end %>
+  <% if can? :destroy, article %>
   &#183; <%= link_to 'Delete', article, :method => :delete, :confirm => "Are you sure?" %>
+  <% end %>
 </p>
 
 <% if params[:action] == "index" %>

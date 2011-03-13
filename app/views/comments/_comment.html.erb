@@ -1,8 +1,12 @@
 <div class="comment">
   <strong><%= (!comment.author.nil?) ? comment.author.name : "Guest" %></strong> on
   <em><%= comment.created_at.to_s(:long) %></em>
-   &#183; <%= link_to 'Edit', edit_comment_path(comment) %>
-   &#183; <%= link_to 'Delete', comment_path(comment), :method => :delete, :confirm => "Are you sure?" %>
+  <% if can? :update, comment %>
+  &#183; <%= link_to 'Edit', edit_comment_path(comment) %>
+  <% end %>
+  <% if can? :destroy, comment %>
+  &#183; <%= link_to 'Delete', comment_path(comment), :method => :delete, :confirm => "Are you sure?" %>
+  <% end %>
   <br />
   <%= simple_format comment.content %>
 </div>
