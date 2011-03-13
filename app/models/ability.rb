@@ -26,6 +26,26 @@ class Ability
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     
     user ||= User.new
-    can :manage, :all
+    
+    if user.role? :admin
+      can :manage, :all
+    else
+      if user.role?(:moderator)
+        can :update, Comment
+      end
+      if user.role?(:author)
+        can :create, Article
+        can [:update, :destroy], Article do |article|
+          article.try(:author) == user
+        end
+      end
+      if user.role?(:member)
+        can [:update, :destroy], Comment do |comment|
+          comment.try(:author) == user
+        end
+      end
+      can :read, :all
+      can :create, Comment
+    end
   end
 end

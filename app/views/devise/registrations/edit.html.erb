@@ -14,6 +14,15 @@
 
   <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></p>
+  
+  <p>
+    <%= label_tag "Roles" %><br />
+    <% for role in Role.all %>
+      <%= check_box_tag "user[role_ids][]", role.id, resource.roles.include?(role) %>
+      <%= role.name.humanize %>
+    <% end %>
+    <%= hidden_field_tag "user[role_ids][]", "" %>
+  </p>
 
   <p><%= f.submit "Update" %></p>
 <% end %>
