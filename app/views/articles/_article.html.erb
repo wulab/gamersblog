@@ -3,7 +3,7 @@
 </h2>
 
 <p>
-  by <strong>Article Author</strong>
+  by <strong><%= article.author.name %></strong>
   on <em><%= article.created_at.to_s(:long) %></em>
   &#183; <%= link_to 'Edit', edit_article_path(article) %>
   &#183; <%= link_to 'Delete', article, :method => :delete, :confirm => "Are you sure?" %>

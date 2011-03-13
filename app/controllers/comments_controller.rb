@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   def create
     article = Article.find(params[:article_id])
     comment = article.comments.build(params[:comment])
+    comment.author = current_user if user_signed_in?
     
     if comment.save
       redirect_to article
@@ -28,6 +29,7 @@ class CommentsController < ApplicationController
   def destroy
     comment = Comment.find(params[:id])
     comment.destroy
+    flash[:success] = "Successfully deleted comment."
     redirect_to comment.article
   end
   
