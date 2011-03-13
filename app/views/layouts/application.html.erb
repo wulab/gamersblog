@@ -15,22 +15,26 @@
   
   <div id="user_nav">
     <% if user_signed_in? %>
-      Logged in as <%= current_user.email %>. Not you?
-      <%= link_to 'Log out', destroy_user_session_path %>
+      <%= current_user.email %> &#183;
+      <%= link_to 'My account', edit_user_registration_path %> &#183;
+      <%= link_to 'Log out', '/logout' %>
     <% else %>
-      <%= link_to 'Register', new_user_registration_path %> or
-      <%= link_to 'Log in', new_user_session_path %>
+      <%= link_to 'Register', '/register' %> &#183;
+      <%= link_to 'Log in', '/login' %>
     <% end %>
   </div>
   
   <h1 id="logo">
     <%= link_to root_url do %>
       <img src="/images/joystick.png" height="50" />
-      <span>GamersBlog</span>
+      <span class="title">GamersBlog</span>
+      <span class="tagline">News for next generation gamers</span>
     <% end %>
   </h1>
   
   <%= yield %>
+  
+  <%= debug(params) if Rails.env.development? %>
 </div>
 
 </body>

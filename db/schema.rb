@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(:version => 20110313093113) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name",                                :default => "Anonymous"
-    t.string   "email",                               :default => "",          :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "",          :null => false
-    t.string   "password_salt",                       :default => "",          :null => false
+    t.string   "name"
+    t.string   "email",                               :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                       :default => "", :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"

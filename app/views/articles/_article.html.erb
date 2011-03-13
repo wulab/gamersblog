@@ -9,12 +9,12 @@
   &#183; <%= link_to 'Delete', article, :method => :delete, :confirm => "Are you sure?" %>
 </p>
 
-<% if current_page?(:action => "index") %>
-<p>
-  <%= simple_format truncate(article.content, :length => 500, :separator => ' ') %>
-  [<%= link_to('Read more', article) %>]
-  [<%= link_to pluralize(article.comments.count, "comment"), article_path(article, :anchor => "comments") %>]
-</p>
+<% if params[:action] == "index" %>
+  <p>
+    <%= simple_format truncate(article.content, :length => 500, :separator => ' ') %>
+    [<%= link_to('Read more', article) %>]
+    [<%= link_to pluralize(article.comments.count, "comment"), article_path(article, :anchor => "comments") %>]
+  </p>
 <% else %>
-<p><%= simple_format article.content %></p>
+  <p><%= simple_format article.content %></p>
 <% end %>

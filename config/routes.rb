@@ -1,6 +1,10 @@
 Railscast::Application.routes.draw do
-  devise_for :users
-
+  devise_for :users, :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout" } do
+    get "login", :to => "devise/sessions#new"
+    get "logout", :to => "devise/sessions#destroy"
+    get "register", :to => "devise/registrations#new"
+  end
+  
   resources :comments
 
   resources :articles do
